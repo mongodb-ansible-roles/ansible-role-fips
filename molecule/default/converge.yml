@@ -4,3 +4,5 @@
   hosts: all
   roles:
     - role: ansible-role-fips
+      vars:
+        fips_in_container: true

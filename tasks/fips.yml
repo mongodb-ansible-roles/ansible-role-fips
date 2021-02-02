@@ -1,0 +1,21 @@
+---
+- name: Check if FIPS is enabled
+  command: cat /proc/sys/crypto/fips_enabled
+  register: fips
+  changed_when: false
+
+- name: Edit GRUB file to enable FIPS
+  lineinfile:
+    path: "{{ fips_grub_file }}"
+    regexp: '^GRUB_CMDLINE_LINUX'
+    line: "{{ fips_grub_cmdline }}"
+
+- name: Generate GRUB config file
+  shell: |
+    grub2-mkconfig -o /etc/grub2.cfg
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+  when: fips.stdout == 0
+
+- name: Reboot
+  reboot:
+  when: fips.stdout == 0

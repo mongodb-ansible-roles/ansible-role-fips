@@ -16,7 +16,9 @@ Role Variables
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-------:|:--------:|
-| name | desc | type | default | required |
+| `fips_in_container` | This task will not work inside of containers | boolean | `false` | `false` |
+| `fips_grub_cmdline` | GRUB command line to specify FIPS | string | `GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 console=tty0   net.ifnames=0 rd.blacklist=nouveau crashkernel=auto boot=/dev/xvda2 fips=1  "` | `false` |
+| `fips_grub_file` | Default GRUB file | string | `/etc/default/grub` | `false` |
 
 Dependencies
 ------------
