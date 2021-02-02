@@ -9,8 +9,8 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: ubi8
-    image: registry.redhat.io/ubi8
+  - name: debian9
+    image: debian:9
 provisioner:
   name: ansible
 verifier:
