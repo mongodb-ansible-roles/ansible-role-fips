@@ -1,1 +1,4 @@
 ---
+fips_in_container: false
+fips_grub_cmdline: 'GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau crashkernel=auto boot=/dev/xvda2 fips=1"'
+fips_grub_file: /etc/default/grub
